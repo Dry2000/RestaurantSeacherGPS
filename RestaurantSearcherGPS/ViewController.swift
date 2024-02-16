@@ -10,14 +10,16 @@ import MapKit
 import CoreLocation
 import CoreLocationUI
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,CLLocationManagerDelegate{
     
-   // @IBOutlet weak var mapView: MKMapView!
-    var response : hotpepperResult?
-    var request = RequestRestaurant()
+    // @IBOutlet weak var mapView: MKMapView!
     
+    
+    @IBAction func moveMapView(_ sender: Any) {
+        performSegue(withIdentifier: "moveMapView", sender: self)
+    }
     var locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,33 +41,19 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(requestCurrentLocation), for: .touchUpInside)
         
     }
-
+    
     @objc func requestCurrentLocation() {
-        self.locationManager.startUpdatingLocation()
+        //self.locationManager.startUpdatingLocation()
+        performSegue(withIdentifier: "toMapViewController", sender: self)
     }
-    func setResponse(){
-            response = request.result
-        //print(response?.results.api_version)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapViewController" {
+            let nextVC = segue.destination as! MapViewController
+            nextVC.locationManager = locationManager
         }
-
-}
-
-extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        locationManager.stopUpdatingLocation()
-        //self.response = RequestRestaurant()
-        request.latitude = location.coordinate.latitude
-        request.longitude = location.coordinate.longitude
-        request.getHotpepperResponse(callBackClosure: setResponse)
-        /*var region: MKCoordinateRegion = mapView.region
-        region.center = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
-                                               longitude: location.coordinate.longitude)
-        region.span.latitudeDelta = 0.02
-        region.span.longitudeDelta = 0.02
-        mapView.setRegion(region, animated: true)*/
+        
     }
-}
 
+}
 
 

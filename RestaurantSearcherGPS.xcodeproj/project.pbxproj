@@ -20,6 +20,7 @@
 		41CECAEF2B7BCD8F008D6C6D /* RequestRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CECAEE2B7BCD8F008D6C6D /* RequestRestaurant.swift */; };
 		41CECAF12B7C98C4008D6C6D /* APIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CECAF02B7C98C4008D6C6D /* APIStruct.swift */; };
 		41CECB2F2B7DD28E008D6C6D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CECB2E2B7DD28E008D6C6D /* APIKey.swift */; };
+		41CECB312B7FB29F008D6C6D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CECB302B7FB29E008D6C6D /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		41CECAEE2B7BCD8F008D6C6D /* RequestRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRestaurant.swift; sourceTree = "<group>"; };
 		41CECAF02B7C98C4008D6C6D /* APIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStruct.swift; sourceTree = "<group>"; };
 		41CECB2E2B7DD28E008D6C6D /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		41CECB302B7FB29E008D6C6D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4D206A2EFF3F0A567D8C18A0 /* Pods-RestaurantSearcherGPS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantSearcherGPS.debug.xcconfig"; path = "Target Support Files/Pods-RestaurantSearcherGPS/Pods-RestaurantSearcherGPS.debug.xcconfig"; sourceTree = "<group>"; };
 		C54A02BC4D58E45A00EE7ED1 /* Pods_RestaurantSearcherGPS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestaurantSearcherGPS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7A6AC0517456277E70D33B /* Pods-RestaurantSearcherGPS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestaurantSearcherGPS.release.xcconfig"; path = "Target Support Files/Pods-RestaurantSearcherGPS/Pods-RestaurantSearcherGPS.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				41A464D02B7BBDBD005A58BE /* AppDelegate.swift */,
 				41A464D22B7BBDBD005A58BE /* SceneDelegate.swift */,
 				41A464D42B7BBDBD005A58BE /* ViewController.swift */,
+				41CECB302B7FB29E008D6C6D /* MapViewController.swift */,
 				41CECAEE2B7BCD8F008D6C6D /* RequestRestaurant.swift */,
 				41CECAF02B7C98C4008D6C6D /* APIStruct.swift */,
 				41CECB2E2B7DD28E008D6C6D /* APIKey.swift */,
@@ -341,6 +344,7 @@
 				41A464D12B7BBDBD005A58BE /* AppDelegate.swift in Sources */,
 				41CECB2F2B7DD28E008D6C6D /* APIKey.swift in Sources */,
 				41A464D32B7BBDBD005A58BE /* SceneDelegate.swift in Sources */,
+				41CECB312B7FB29F008D6C6D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

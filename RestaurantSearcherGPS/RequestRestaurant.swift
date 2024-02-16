@@ -13,13 +13,13 @@ class RequestRestaurant{
     var result:hotpepperResult?
     var latitude:Double!
     var longitude:Double!
-        func getHotpepperResponse(callBackClosure:@escaping () -> Void){
+    func getHotpepperResponse(callBackClosure:@escaping () -> Void){
             let apiKey = Key()
             var access_resp:hotpepperResult?
             let url = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apiKey.key!)&lat=\(latitude!)&lng=\(longitude!)&range=5&order=4&format=json"
             AF.request(url,method: .get).responseDecodable(of:hotpepperResult.self ){response in
                 switch response.result{
-                case .success(let value):
+                case .success:
                     /*let shiftJisJsonString = String(data: response.data!, encoding: .shiftJIS)
                     let utf8Json = shiftJisJsonString!.data(using: .utf8)
                     print(value)
