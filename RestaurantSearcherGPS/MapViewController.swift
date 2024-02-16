@@ -54,6 +54,7 @@ class MapViewController: UIViewController{
         //print(request.result?.results.shop[0].id)
         if (request.result?.results.results_available)! > 1{
             let results = request.result?.results
+            // 店の情報を取り出し、ピンとしてマップ上に表示
             for shop in (results?.shop)!
             {
                 let pin = MKPointAnnotation()
