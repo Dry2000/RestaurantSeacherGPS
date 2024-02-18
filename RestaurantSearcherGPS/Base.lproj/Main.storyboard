@@ -7,6 +7,7 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +33,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="4v4-k5-sYY" kind="presentation" identifier="toMapViewController" modalPresentationStyle="fullScreen" id="zyv-9d-Od6"/>
+                        <segue destination="4v4-k5-sYY" kind="presentation" identifier="toMapView" modalPresentationStyle="fullScreen" id="zyv-9d-Od6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -52,6 +53,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-a8-Rm3">
+                                <rect key="frame" x="159" y="680" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="4v4-k5-sYY" eventType="touchUpInside" id="Lft-X7-CcZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="igZ-VL-ocu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,11 +69,93 @@
                     <navigationItem key="navigationItem" id="Npf-am-4W1"/>
                     <connections>
                         <outlet property="mapView" destination="oBY-hk-SXT" id="sZh-C9-aOS"/>
+                        <segue destination="ZrU-DG-POr" kind="show" identifier="toRestaurantResultView" id="LJ5-G0-6sK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRe-pi-Phd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872.51908396946567" y="3.5211267605633805"/>
+        </scene>
+        <!--Restaurant Result View Controller-->
+        <scene sceneID="sGu-fr-OTp">
+            <objects>
+                <viewController wantsFullScreenLayout="YES" id="ZrU-DG-POr" customClass="RestaurantResultViewController" customModule="RestaurantSearcherGPS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RzL-JB-fYy" customClass="Ma">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Drg-Oj-dwd">
+                                <rect key="frame" x="0.0" y="38" width="393" height="784"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ec9-U7-tSG">
+                                    <size key="itemSize" width="393" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="noh-70-8cu">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Y0j-sl-tzG">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-kA-tB3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="212" height="136"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA1-c8-rXI">
+                                                    <rect key="frame" x="220" y="8" width="173" height="112"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XA1-c8-rXI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9sy-kA-tB3" secondAttribute="trailing" constant="8" symbolic="YES" id="Bsu-5t-O8t"/>
+                                                <constraint firstItem="9sy-kA-tB3" firstAttribute="top" secondItem="Y0j-sl-tzG" secondAttribute="top" id="KM7-Cx-x9d"/>
+                                                <constraint firstAttribute="trailing" secondItem="XA1-c8-rXI" secondAttribute="trailing" id="PS5-pO-2KA"/>
+                                                <constraint firstItem="9sy-kA-tB3" firstAttribute="leading" secondItem="Y0j-sl-tzG" secondAttribute="leading" id="RnR-n9-sa5"/>
+                                                <constraint firstAttribute="bottom" secondItem="9sy-kA-tB3" secondAttribute="bottom" constant="-8" id="e8a-h5-h6K"/>
+                                                <constraint firstItem="9sy-kA-tB3" firstAttribute="top" secondItem="Y0j-sl-tzG" secondAttribute="top" id="nQ7-tR-71o"/>
+                                                <constraint firstItem="XA1-c8-rXI" firstAttribute="leading" secondItem="Y0j-sl-tzG" secondAttribute="leading" constant="220" id="sWD-ls-wyb"/>
+                                                <constraint firstItem="XA1-c8-rXI" firstAttribute="leading" secondItem="9sy-kA-tB3" secondAttribute="trailing" constant="8" id="tZW-Tm-pNa"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="393" height="128"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uon-cQ-G3a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U9F-tO-fwj"/>
+                    <connections>
+                        <outlet property="RestaurantTable" destination="Drg-Oj-dwd" id="ZF7-2D-dNP"/>
+                        <segue destination="11J-nL-zoN" kind="show" identifier="toRestaurantDetailView" id="fmP-gg-PJe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ttn-aK-NQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838.9312977099237" y="3.5211267605633805"/>
+        </scene>
+        <!--Restaurant Detail View Controller-->
+        <scene sceneID="kCN-9r-31p">
+            <objects>
+                <viewController id="11J-nL-zoN" customClass="RestaurantDetailViewController" customModule="RestaurantSearcherGPS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9LK-ja-ptZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NWg-H7-fbi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qaf-yX-XkX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhb-IX-du2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2715" y="4"/>
         </scene>
     </scenes>
     <resources>

@@ -16,7 +16,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate{
     
     
     @IBAction func moveMapView(_ sender: Any) {
-        performSegue(withIdentifier: "moveMapView", sender: self)
+        
+        performSegue(withIdentifier: "toMapView", sender: self)
     }
     var locationManager = CLLocationManager()
     
@@ -24,10 +25,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate{
         super.viewDidLoad()
         
         locationManager.delegate = self
-        createLocationButton()
+        locationManager.requestWhenInUseAuthorization()
+       // createLocationButton()
     }
     
-    private func createLocationButton() {
+    /*private func createLocationButton() {
         let button = CLLocationButton(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: self.view.frame.width/2,
@@ -40,14 +42,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate{
         self.view.addSubview(button)
         button.addTarget(self, action: #selector(requestCurrentLocation), for: .touchUpInside)
         
-    }
+    }*/
     
     @objc func requestCurrentLocation() {
         //self.locationManager.startUpdatingLocation()
-        performSegue(withIdentifier: "toMapViewController", sender: self)
+        //performSegue(withIdentifier: "toMapViewController", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMapViewController" {
+        if segue.identifier == "toMapView" {
             let nextVC = segue.destination as! MapViewController
             nextVC.locationManager = locationManager
         }

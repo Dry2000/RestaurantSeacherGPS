@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "86A318F3-E78B-45C6-865C-F3255363B4C2"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CB5510C-B8D1-42F6-89D0-EFDFBDEBA391"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RestaurantSearcherGPS/RestaurantResultViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0CB5510C-B8D1-42F6-89D0-EFDFBDEBA391 - f2a937a6178ec300"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RestaurantSearcherGPS.RestaurantResultViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "RestaurantSearcherGPS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dry/Desktop/%E8%87%AA%E5%AD%A6/RestaurantSearcherGPS/RestaurantSearcherGPS/RestaurantResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "5980">
+               </Location>
+               <Location
+                  uuid = "0CB5510C-B8D1-42F6-89D0-EFDFBDEBA391 - f2a937a6178ec300"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RestaurantSearcherGPS.RestaurantResultViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "RestaurantSearcherGPS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dry/Desktop/%E8%87%AA%E5%AD%A6/RestaurantSearcherGPS/RestaurantSearcherGPS/RestaurantResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "5976">
+               </Location>
+               <Location
+                  uuid = "0CB5510C-B8D1-42F6-89D0-EFDFBDEBA391 - f2a937a6178ec300"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RestaurantSearcherGPS.RestaurantResultViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "RestaurantSearcherGPS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dry/Desktop/%E8%87%AA%E5%AD%A6/RestaurantSearcherGPS/RestaurantSearcherGPS/RestaurantResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "5984">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
