@@ -5,8 +5,10 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,27 +50,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsUserLocation="YES" showsUserTrackingButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-hk-SXT">
-                                <rect key="frame" x="0.0" y="53" width="393" height="799"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-hk-SXT">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-a8-Rm3">
-                                <rect key="frame" x="159" y="680" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-a8-Rm3">
+                                <rect key="frame" x="292" y="60" width="115.66666666666669" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="0OP-AF-pZu"/>
+                                    <constraint firstAttribute="width" constant="115.66666666666669" id="gGJ-Hs-5JK"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="🔍検索する!"/>
                                 <connections>
                                     <action selector="searchButton:" destination="4v4-k5-sYY" eventType="touchUpInside" id="Lft-X7-CcZ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s6o-Aa-8eL" userLabel="inputField">
+                                <rect key="frame" x="0.0" y="60" width="284" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXi-pM-hk4">
+                                <rect key="frame" x="292" y="102" width="101" height="44"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <menu key="menu" id="HYb-o7-Kh3">
+                                    <children>
+                                        <command title="Item 1" id="aPM-jM-xo8"/>
+                                        <command title="Item 2" id="MlX-f1-3SI"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="igZ-VL-ocu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oBY-hk-SXT" firstAttribute="top" secondItem="igZ-VL-ocu" secondAttribute="top" id="1tv-J6-dlW"/>
+                            <constraint firstItem="cXi-pM-hk4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="igZ-VL-ocu" secondAttribute="trailing" id="5Ya-9Y-t7p"/>
+                            <constraint firstItem="oBY-hk-SXT" firstAttribute="leading" secondItem="s6o-Aa-8eL" secondAttribute="leading" id="617-ar-kZU"/>
+                            <constraint firstItem="oBY-hk-SXT" firstAttribute="leading" secondItem="343-B3-xhX" secondAttribute="leading" id="Elb-cP-jvr"/>
+                            <constraint firstItem="s6o-Aa-8eL" firstAttribute="leading" secondItem="igZ-VL-ocu" secondAttribute="leading" id="NoU-ZR-fsn"/>
+                            <constraint firstItem="cXi-pM-hk4" firstAttribute="leading" secondItem="igZ-VL-ocu" secondAttribute="leading" constant="292" id="Tpg-sM-x1a"/>
+                            <constraint firstItem="s6o-Aa-8eL" firstAttribute="top" secondItem="igZ-VL-ocu" secondAttribute="top" constant="60" id="Xaj-Ci-XlB"/>
+                            <constraint firstItem="aVJ-a8-Rm3" firstAttribute="leading" secondItem="s6o-Aa-8eL" secondAttribute="trailing" constant="8" symbolic="YES" id="Yfr-Yg-rk3"/>
+                            <constraint firstItem="aVJ-a8-Rm3" firstAttribute="top" secondItem="igZ-VL-ocu" secondAttribute="top" constant="60" id="eEi-Sm-H3J"/>
+                            <constraint firstItem="oBY-hk-SXT" firstAttribute="bottom" secondItem="igZ-VL-ocu" secondAttribute="bottom" id="eYC-wp-4hL"/>
+                            <constraint firstItem="aVJ-a8-Rm3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="igZ-VL-ocu" secondAttribute="leading" constant="277" id="ed6-Pj-oUe"/>
+                            <constraint firstAttribute="trailing" secondItem="cXi-pM-hk4" secondAttribute="trailing" id="gUH-G6-UC1"/>
+                            <constraint firstItem="cXi-pM-hk4" firstAttribute="top" secondItem="aVJ-a8-Rm3" secondAttribute="bottom" constant="8" id="nVC-8h-cXh"/>
+                            <constraint firstItem="cXi-pM-hk4" firstAttribute="top" secondItem="aVJ-a8-Rm3" secondAttribute="bottom" constant="8" id="or4-KH-0dI"/>
+                            <constraint firstItem="igZ-VL-ocu" firstAttribute="trailing" secondItem="s6o-Aa-8eL" secondAttribute="trailing" constant="109" id="q11-Jy-T8m"/>
+                            <constraint firstItem="s6o-Aa-8eL" firstAttribute="leading" secondItem="igZ-VL-ocu" secondAttribute="leading" id="x0B-Aw-TgH"/>
+                            <constraint firstItem="cXi-pM-hk4" firstAttribute="top" secondItem="aVJ-a8-Rm3" secondAttribute="bottom" constant="8" id="zDo-3d-pkD"/>
+                            <constraint firstAttribute="trailing" secondItem="oBY-hk-SXT" secondAttribute="trailing" id="zcT-qr-MoX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Npf-am-4W1"/>
                     <connections>
+                        <outlet property="inputField" destination="s6o-Aa-8eL" id="Xvs-f3-8UZ"/>
                         <outlet property="mapView" destination="oBY-hk-SXT" id="sZh-C9-aOS"/>
+                        <outlet property="rangePicker" destination="cXi-pM-hk4" id="8tm-66-QHK"/>
                         <segue destination="ZrU-DG-POr" kind="show" identifier="toRestaurantResultView" id="LJ5-G0-6sK"/>
                     </connections>
                 </viewController>
@@ -195,6 +240,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
