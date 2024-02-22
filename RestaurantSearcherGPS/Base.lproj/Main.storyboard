@@ -151,7 +151,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="212" height="136"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA1-c8-rXI">
-                                                    <rect key="frame" x="220" y="8" width="173" height="112"/>
+                                                    <rect key="frame" x="220" y="8" width="153" height="112"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -160,8 +160,8 @@
                                             <constraints>
                                                 <constraint firstItem="XA1-c8-rXI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9sy-kA-tB3" secondAttribute="trailing" constant="8" symbolic="YES" id="Bsu-5t-O8t"/>
                                                 <constraint firstItem="9sy-kA-tB3" firstAttribute="top" secondItem="Y0j-sl-tzG" secondAttribute="top" id="KM7-Cx-x9d"/>
-                                                <constraint firstAttribute="trailing" secondItem="XA1-c8-rXI" secondAttribute="trailing" id="PS5-pO-2KA"/>
                                                 <constraint firstItem="9sy-kA-tB3" firstAttribute="leading" secondItem="Y0j-sl-tzG" secondAttribute="leading" id="RnR-n9-sa5"/>
+                                                <constraint firstAttribute="trailing" secondItem="XA1-c8-rXI" secondAttribute="trailing" constant="20" id="a5g-fy-cbb"/>
                                                 <constraint firstAttribute="bottom" secondItem="9sy-kA-tB3" secondAttribute="bottom" constant="-8" id="e8a-h5-h6K"/>
                                                 <constraint firstItem="9sy-kA-tB3" firstAttribute="top" secondItem="Y0j-sl-tzG" secondAttribute="top" id="nQ7-tR-71o"/>
                                                 <constraint firstItem="XA1-c8-rXI" firstAttribute="leading" secondItem="Y0j-sl-tzG" secondAttribute="leading" constant="220" id="sWD-ls-wyb"/>
@@ -232,11 +232,38 @@
                         <outlet property="shopImage" destination="P1c-Bd-OyL" id="J7T-6l-m0c"/>
                         <outlet property="shopInfoTable" destination="A3v-zB-YaN" id="YXl-Uc-CMo"/>
                         <outlet property="shopName" destination="uRd-Ip-Mrl" id="RqD-We-0z4"/>
+                        <segue destination="3zO-zc-hJW" kind="show" identifier="toPathView" id="S1S-oA-kDz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhb-IX-du2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2713.740458015267" y="3.5211267605633805"/>
+        </scene>
+        <!--Path View Controller-->
+        <scene sceneID="uI6-zP-Ypq">
+            <objects>
+                <viewController id="3zO-zc-hJW" customClass="PathViewController" customModule="RestaurantSearcherGPS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DQy-qq-SxT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7L-kc-9AR">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Exl-6q-hhN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="12k-vq-SZo"/>
+                    <connections>
+                        <outlet property="mapView" destination="r7L-kc-9AR" id="8fj-WT-Tnr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G0U-vv-WZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3536.6412213740455" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

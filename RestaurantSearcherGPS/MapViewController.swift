@@ -70,12 +70,35 @@ class MapViewController: UIViewController,UITextFieldDelegate{
             longitude: locationManager.location!.coordinate.longitude,
             range: rangeVal.rawValue,
             inputText: inputField.text,
+            number: 1,
             callBackClosure: receiveResult
         )
         
     }
     private func receiveResult(){
-        performSegue(withIdentifier: "toRestaurantResultView", sender: self)
+        // 検索結果が0件だった場合
+        if(request.failDecode){
+            let alert = UIAlertController(title: "通信に問題が発生しました", message: "大変申し訳ありませんが、通信に問題が発生し、レストランの情報を取得できませんでした。他の条件をお試しください", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                //self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        if (request.result?.results.results_available)! < 1{
+            let alert = UIAlertController(title: "条件に一致する店舗が見つかりませんでした", message: "検索条件または、範囲を再設定してください", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                //self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }else{
+            performSegue(withIdentifier: "toRestaurantResultView", sender: self)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

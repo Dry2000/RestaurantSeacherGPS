@@ -50,15 +50,15 @@ class RestaurantDetailViewController: UIViewController,UITableViewDelegate,UITab
         cell.contentConfiguration = content
         return cell
     }
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == (shop?.recipeMaterial.count)!+1{
-            self.performSegue(withIdentifier: "toOriginalPage", sender: Any?.self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            self.performSegue(withIdentifier: "toPathView", sender: Any?.self)
         }
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if (segue.identifier == "toOriginalPage") {
-                let vc2:originalPageViewController = (segue.destination as? originalPageViewController)!
-                vc2.targetUrl = shop?.recipeUrl
+            if (segue.identifier == "toPathView") {
+                let nextVC:PathViewController = (segue.destination as? PathViewController)!
+                nextVC.shopInfo = shop
             }
-        }*/
+        }
 }
