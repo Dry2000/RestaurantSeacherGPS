@@ -13,17 +13,21 @@ import CoreLocation
 import CoreLocationUI
 
 class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
-    var locationManager = CLLocationManager()
     var response : hotpepperResult?
     var tappedPath : Int!
         
+    @IBAction func BackMapView(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var RestaurantTable: UICollectionView!
     override func viewDidLoad() {
-        //UINib(nibName: "UICollectionElementKindCell", bundle:nil)
+
         RestaurantTable.delegate = self
         RestaurantTable.dataSource = self
         RestaurantTable.isUserInteractionEnabled = true
         RestaurantTable.allowsSelection = true
+
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.view.frame.width-10, height: 180)
         RestaurantTable.collectionViewLayout = layout
@@ -32,6 +36,7 @@ class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,
         if response == nil{
             return 1
         }
+        // 表示される検索結果の数は前の画面でリクエストしたresults_returnedの値を使用する
         return (Int((response?.results.results_returned)!))!
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -55,10 +60,6 @@ class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,
         nameLabel.text = "\(response!.results.shop[indexPath.row].name)\n\(response!.results.shop[indexPath.row].access)"
         nameLabel.lineBreakMode = .byCharWrapping
         nameLabel.numberOfLines = 0
-        /*let accessLabel = Cell.contentView.viewWithTag(3) as! UILabel
-        accessLabel.text = response!.results.shop[indexPath.row].access
-        accessLabel.lineBreakMode = .byCharWrapping
-        accessLabel.numberOfLines = 0*/
         
         return Cell
     }
@@ -68,12 +69,14 @@ class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,
         }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // タップしたところの値を保持して、レストランの詳細画面に遷移
             tappedPath = indexPath.row
             performSegue(withIdentifier: "toRestaurantDetailView", sender: nil)
         }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if (segue.identifier == "toRestaurantDetailView") {
                 let vc:RestaurantDetailViewController = (segue.destination as? RestaurantDetailViewController)!
+                //タップされたところのレストランの情報を次の画面に渡す
                 vc.shop = response?.results.shop[tappedPath]
                 
             }

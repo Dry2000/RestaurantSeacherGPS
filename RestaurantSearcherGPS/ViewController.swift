@@ -3,7 +3,7 @@
 //  RestaurantSearcherGPS
 //
 //  Created by 洞井僚太 on 2024/02/14.
-//
+//  最初に表示される画面
 
 import UIKit
 import MapKit
@@ -23,30 +23,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //任意の箇所をタップすると検索画面に遷移
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(requestCurrentLocation(_:)))
+        self.view.addGestureRecognizer(tapGesture)
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
        // createLocationButton()
     }
     
-    /*private func createLocationButton() {
-        let button = CLLocationButton(frame: CGRect(x: 0,
-                                                    y: 0,
-                                                    width: self.view.frame.width/2,
-                                                    height: 50))
-        button.label = .currentLocation
-        button.icon = .arrowFilled
-        button.cornerRadius = 12
-        button.center = CGPoint(x: view.center.x,
-                                y: view.center.y + 300)
-        self.view.addSubview(button)
-        button.addTarget(self, action: #selector(requestCurrentLocation), for: .touchUpInside)
-        
-    }*/
     
-    @objc func requestCurrentLocation() {
-        //self.locationManager.startUpdatingLocation()
-        //performSegue(withIdentifier: "toMapViewController", sender: self)
+    @objc func requestCurrentLocation(_ sender : UITapGestureRecognizer) {
+        
+        performSegue(withIdentifier: "toMapView", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapView" {

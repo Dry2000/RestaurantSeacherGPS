@@ -39,7 +39,7 @@ class MapViewController: UIViewController,UITextFieldDelegate{
    
     
     @IBAction func searchButton(_ sender: Any) {
-        requestCurrentLocation()
+        requestRestaurant()
     }
     
     override func viewDidLoad() {
@@ -47,11 +47,20 @@ class MapViewController: UIViewController,UITextFieldDelegate{
         inputField.delegate = self
         //test.delegate = self
         setCenterCurrentLocation()
+        // ボタンの下方向の矢印を右側に表示したいのでボタンを左右反転させる
+        rangePicker.transform = CGAffineTransform(scaleX: -1, y: 1)
+        // 文字が反転するため、titleLabelを左右反転させ元に戻す、画像は左右反転しても問題ない形状なので反転しない
+        rangePicker.titleLabel?.transform = CGAffineTransform(scaleX: -1, y: 1)
+        rangePicker.imageView?.tintColor = .white
+        //ボタン(rangePicker)をタップすると、検索する範囲を設定できるようにactionを追加する
         self.configureRangePicker()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(requestCurrentLocation(_:)))
+        self.view.addGestureRecognizer(tapGesture)
         
     }
     
-    
+    // ビューが開いた時に画面の中心を現在地に合わせる関数
     private func setCenterCurrentLocation(){
         var region: MKCoordinateRegion = mapView.region
         region.center = CLLocationCoordinate2D(latitude: self.locationManager.location!.coordinate.latitude,
@@ -61,10 +70,8 @@ class MapViewController: UIViewController,UITextFieldDelegate{
         mapView.setRegion(region, animated: true)
     }
     
-    private func requestCurrentLocation() {
+    private func requestRestaurant() {
         self.locationManager.startUpdatingLocation()
-        //request.latitude = self.locationManager.location!.coordinate.latitude
-        //request.longitude = self.locationManager.location!.coordinate.longitude
         request.getHotpepperResponse(
             latitude: locationManager.location!.coordinate.latitude,
             longitude: locationManager.location!.coordinate.longitude,
@@ -75,8 +82,10 @@ class MapViewController: UIViewController,UITextFieldDelegate{
         )
         
     }
+    
+    //リクエストの結果を受け取ってそれによって画面遷移かアラートを表示する
     private func receiveResult(){
-        // 検索結果が0件だった場合
+        // jsondecorderでエラーが発生した場合(party_capacity = "" の場合など)
         if(request.failDecode){
             let alert = UIAlertController(title: "通信に問題が発生しました", message: "大変申し訳ありませんが、通信に問題が発生し、レストランの情報を取得できませんでした。他の条件をお試しください", preferredStyle: .alert)
             
@@ -87,6 +96,7 @@ class MapViewController: UIViewController,UITextFieldDelegate{
             present(alert, animated: true, completion: nil)
             return
         }
+        // 検索結果が0件だった場合
         if (request.result?.results.results_available)! < 1{
             let alert = UIAlertController(title: "条件に一致する店舗が見つかりませんでした", message: "検索条件または、範囲を再設定してください", preferredStyle: .alert)
             
@@ -96,6 +106,7 @@ class MapViewController: UIViewController,UITextFieldDelegate{
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         }else{
+            //上記以外の場合、検索結果一覧を表示する画面に遷移
             performSegue(withIdentifier: "toRestaurantResultView", sender: self)
         }
         
@@ -104,11 +115,11 @@ class MapViewController: UIViewController,UITextFieldDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRestaurantResultView" {
             let nextVC = segue.destination as! RestaurantResultViewController
-            nextVC.locationManager = locationManager
             nextVC.response = request.result
         }
     }
     
+    //UIButtonによって選ばれた範囲によって表示範囲を変更する関数
     func setRegion(range:Int){
         var region: MKCoordinateRegion = mapView.region
         region.center = CLLocationCoordinate2D(latitude: self.locationManager.location!.coordinate.latitude,
@@ -139,18 +150,22 @@ class MapViewController: UIViewController,UITextFieldDelegate{
         
         mapView.setRegion(region, animated: true)
     }
-    
+    // キーボードのreturnが押された時、キーボードを閉じる
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             // キーボードを閉じる
             textField.resignFirstResponder()
             
             return true
         }
-
+    // キーボード以外の場所が押された時、キーボードを閉じる
+    @objc func requestCurrentLocation(_ sender : UITapGestureRecognizer) {
+        
+        inputField.resignFirstResponder()
+    }
     
     private func configureRangePicker() {
         var actions = [UIMenuElement]()
-        // HIGH
+        // threeM
         actions.append(UIAction(title: rangeItems[0], image: nil, state: self.rangeVal == MenuType.threeM ? .on : .off,
                                 handler: { (_) in
                                     self.rangeVal = .threeM
@@ -186,50 +201,20 @@ class MapViewController: UIViewController,UITextFieldDelegate{
 
         // UIButtonにUIMenuを設定
         rangePicker.menu = UIMenu(title: "", options: .displayInline, children: actions)
-        // こちらを書かないと表示できない場合があるので注意
         rangePicker.showsMenuAsPrimaryAction = true
         // ボタンの表示を変更
         // APIのリクエストで求められるrangeの値は1~5なので、rawValueをそれに合わせた結果、配列外参照を踏むので1引く
         rangePicker.setTitle(rangeItems[self.rangeVal.rawValue-1], for: .normal)
-        
+        //選ばれた範囲によって表示範囲を変更する
         setRegion(range: self.rangeVal.rawValue)
     }
 
-
-    
-    
-    /*private func setPinOnMapView(){
-        //print(request.result?.results.shop[0].id)
-        if (request.result?.results.results_available)! > 1{
-            let results = request.result?.results
-            // 店の情報を取り出し、ピンとしてマップ上に表示
-            for shop in (results?.shop)!
-            {
-                let pin = MKPointAnnotation()
-                // ピンのタイトル・サブタイトルをセット
-                pin.title = shop.name
-                //pin.subtitle = "サブタイトル"
-                        // ピンに一番上で作った位置情報をセット
-                pin.coordinate.latitude = Double(shop.lat)
-                pin.coordinate.longitude = Double(shop.lng)
-                        // mapにピンを表示する
-                self.mapView.addAnnotation(pin)
-                print(pin.coordinate)
-            }
-        }*/
-        
-        
-        
     }
     
     extension MapViewController: CLLocationManagerDelegate {
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let location = locations.first else { return }
             locationManager.stopUpdatingLocation()
-            //self.response = RequestRestaurant()
-            //request.latitude = location.coordinate.latitude
-            //request.longitude = location.coordinate.longitude
-            //request.getHotpepperResponse(callBackClosure: setResponse)
             var region: MKCoordinateRegion = mapView.region
              region.center = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
              longitude: location.coordinate.longitude)
