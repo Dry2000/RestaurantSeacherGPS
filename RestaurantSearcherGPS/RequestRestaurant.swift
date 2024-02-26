@@ -30,12 +30,13 @@ class RequestRestaurant{
             case .success:
                 let decoder:JSONDecoder = JSONDecoder()
                 do{
+                    self.failDecode = false
                     accessResponse = try decoder.decode(hotpepperResult.self,from:response.data!)
                     self.result = accessResponse
                     print("success")
                     callBackClosure()
                 }catch{
-                    
+                    self.failDecode = true
                     print("JSON convert failed",error.localizedDescription)
                 }
                 break
