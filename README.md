@@ -39,8 +39,7 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 検索する!ボタンの下に存在するボタンを押下することで、検索半径をセットすることができます。また、このボタンを利用して検索半径を設定した際、概ねその検索半径に一致するように画面のマップの縮尺が変更されます。
 
 
-<img src="readmeImage/map300m.PNG" width="320px">
-<img src="readmeImage/map2km.PNG" width="320px">
+|<img src="readmeImage/map300m.PNG" width="320px">|<img src="readmeImage/map2km.PNG" width="320px">|
 
 ### 検索結果画面
 
@@ -70,7 +69,7 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 
 また、下部に設置されている人と車のボタンをタップした際、それぞれに対応した経路と所要時間が表示されます。
 
-<img src="readmeImages/route.PNG" width="320px">
+<img src="readmeImage/route.PNG" width="320px">
 
 ## 使用したライブラリ
 Alamofire
