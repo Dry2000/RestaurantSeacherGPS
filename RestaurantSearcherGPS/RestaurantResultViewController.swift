@@ -29,7 +29,7 @@ class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,
         RestaurantTable.allowsSelection = true
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width-10, height: 180)
+        layout.itemSize = CGSize(width: self.view.frame.width-10, height: self.view.frame.height/4)
         RestaurantTable.collectionViewLayout = layout
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,6 +60,8 @@ class RestaurantResultViewController: UIViewController,UICollectionViewDelegate,
         nameLabel.text = "\(response!.results.shop[indexPath.row].name)\n\(response!.results.shop[indexPath.row].access)"
         nameLabel.lineBreakMode = .byCharWrapping
         nameLabel.numberOfLines = 0
+        // ToDo: labelの文字が見切れる問題があるので解決する
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         return Cell
     }
