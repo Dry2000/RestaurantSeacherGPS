@@ -42,7 +42,7 @@ class RestaurantDetailViewController: UIViewController,UITableViewDelegate,UITab
                 content.text = shop.open
                 break
             case 1:
-                content.text = shop.address
+                content.text = "住所：\(shop.address)"
                 break
             case 2:
                 if shop.budget.average == ""{
