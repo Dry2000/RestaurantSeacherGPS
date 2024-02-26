@@ -13,10 +13,10 @@ struct hotpepperResult:Codable{
 }
 struct hotpepResult:Codable{
     let api_version:String
-    let results_available:Int
-    let results_returned:String
-    let results_start:Int
-    let shop:[shop]
+    let results_available:Int!
+    let results_returned:String!
+    let results_start:Int!
+    let shop:[shop]!
 }
 
 
@@ -38,7 +38,7 @@ struct shop:Codable{
     let genre:codeNameCatch
     let sub_genre:codeAndName!
     let budget:codeNameAVG!
-    let buget_memo:String!
+    let budget_memo:String!
     let `catch`:String
     let capacity:Int!
     let access:String
@@ -119,3 +119,5 @@ struct couponURL:Codable{
     let pc:String!
     let sp:String!
 }
+
+//
