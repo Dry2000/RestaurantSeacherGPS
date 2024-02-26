@@ -4,7 +4,7 @@ RestaurantSearcherGPS
 ## 対象OS
 iOS 15.6以上 
 ## 開発環境
-Xcode Version 15.2 (12E262)
+Xcode Version 15.2
 ## 言語
 Swift 5.9.2
 ## 開発期間
