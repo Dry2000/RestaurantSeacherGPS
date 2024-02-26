@@ -26,7 +26,7 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 
 画面上の任意の箇所をタップすることで次の検索条件入力画面に遷移します。また、この画面で位置情報を使用することの許可をとります。
 
-<img src="readmeImages/title.PNG" width="320px">
+<img src="readmeImage/title.PNG" width="320px">
 
 ### 検索条件入力画面
 
@@ -39,8 +39,8 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 検索する!ボタンの下に存在するボタンを押下することで、検索半径をセットすることができます。また、このボタンを利用して検索半径を設定した際、概ねその検索半径に一致するように画面のマップの縮尺が変更されます。
 
 
-<img src="readmeImages/map300m.PNG" width="320px">
-<img src="readmeImages/map2km.PNG" width="320px">
+<img src="readmeImage/map300m.PNG" width="320px">
+<img src="readmeImage/map2km.PNG" width="320px">
 
 ### 検索結果画面
 
@@ -50,7 +50,7 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 
 各行をタップすることで対応した飲食店の店舗詳細画面に遷移します。
 
-<img src="readmeImages/restaurant.PNG" width="320px">
+<img src="readmeImage/restaurant.PNG" width="320px">
 
 ### 店舗詳細画面
 
@@ -60,7 +60,7 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 
 画面上の表の一番下の行にある「現在地から経路を調べる」と書かれたセルをタップすることで飲食店への経路を表示する画面へと遷移します。
 
-<img src="readmeImages/restaurantDetail.PNG" width="320px">
+<img src="readmeImage/restaurantDetail.PNG" width="320px">
 
 ### 経路表示画面
 
@@ -75,10 +75,16 @@ GPSを利用して、自分の周辺に存在するHotPepperAPIに登録され�
 ## 使用したライブラリ
 Alamofire
 
-# コンセプト
+## コンセプト
 
 食事の献立を考えることが面倒な時に大雑把に食べたいカテゴリさえ選べばおすすめのレシピをサジェストする
 
-# こだわったポイント
+## こだわったポイント
 
 何を操作すれば良いかわかりやすいように不必要な情報を一切UIに入れないようにした。
+
+## デザイン面でこだわったポイント
+
+## アドバイスして欲しいポイント
+
+## 自己評価
